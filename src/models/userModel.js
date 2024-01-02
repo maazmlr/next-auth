@@ -19,7 +19,7 @@ const userSchema=new mongoose.Schema({
         default:false
     },
     isVerified :{
-        type : boolean ,
+        type : Boolean ,
         default : false
     },
     forgotPasswordToken : String,

@@ -2,12 +2,12 @@ import connect from "@/dbConfig/dbConfig";
 import User from '@/models/userModel'
 
 import { NextRequest,NextResponse } from "next/server";
-import bcryptjs from 'bcryptjs'
+import bcryptjs from 'bcrypt'
 
 
 connect()
 
-export default async function POST(request:NextResponse) {
+export  async function POST(request:NextResponse) {
     try {
         const reqBod=await request.json();
         const {username,email,password}=reqBod;
@@ -30,13 +30,14 @@ export default async function POST(request:NextResponse) {
         const savedUser=await newUser.save();
 
         console.log(savedUser);
+        console.log(reqBod)
 
         return NextResponse.json({message:'User Created Successfully',success:true,savedUser},{status:201})
 
 
 
 
-        console.log(reqBod)
+       
     } catch (error :any) {
         return NextResponse.json({message:error.message},{status:500})
     }
