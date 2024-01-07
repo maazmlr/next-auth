@@ -21,10 +21,16 @@ export default function Profile(){
             }
     }
 
+    const  getUserData=async()=>{
+    const res= await axios.get("/api/users/me");
+    console.log(res)
+    }
+
     return(
         <div className="text-4xl">
             <p>User Profile</p>
             <button className="bg-neutral-200 p-10" onClick={logout}>Logout</button>
+            <button className="bg-neutral-200 p-10" onClick={getUserData}>GEt Adata</button>
         </div>
     )
 }
